@@ -1,0 +1,92 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  background: white;
+  font-family: 'Roboto', sans-serif;
+  overflow: hidden;
+}
+
+#Grid {
+  width: 100%;
+  height: 100%;
+}
+
+.Card {
+  width: 15em;
+  height: 15em;
+  color: white;
+  border-radius: 7%;
+  overflow: hidden;
+  margin: 2px;
+  position: relative;
+}
+
+.cardContent {
+  position: relative;
+  top: 49%;
+  left: 50%;
+  width: 15em;
+  height: 15em;
+  background-image: url("UIImages/defaultProfile.png");
+  background-position: center;
+  background-size: cover;
+  transform: translate(-50%, -50%);
+}
+
+.cardHeader {
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  top: 0px;
+  background-color: #333333;
+  z-index: 1;
+  transform: translateY(-100%);
+  transition: transform 0.5s;
+  cursor: grab;
+}
+
+.cardName {
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  bottom: 0px;
+  background-color: #333333;
+  z-index: 1;
+  font-size: 3vh;
+  text-align: center;
+  display: block;
+  transform: translateY(100%);
+  transition: transform 0.5s;
+}
+
+.Card:hover .cardHeader {
+  transform: translateY(0);
+}
+
+.Card:hover .cardName {
+  transform: translateY(0);
+}
+
+#cardHolder {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#heldCards {
+  width: calc(100%-100px)
+}
+
+#cardHolderOverlay {
+  width: 100%;
+  height: 100%;
+  background-image: url("UIImages/cardHolderOutline.png");
+  background-position: center;
+  background-size: cover;
+}

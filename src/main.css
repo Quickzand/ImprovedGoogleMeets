@@ -9,8 +9,14 @@ body {
 }
 
 #Grid {
-  width: 100%;
-  height: 100%;
+  width: calc(100% - 10px);
+  height: calc(100% - 110px);
+}
+
+#Grid.droppable-hover {
+  background-color: rgba(0, 50, 0, 0.1);
+  border: solid rgba(50, 100, 50, 0.5) 5px;
+  border-radius: 10px;
 }
 
 .Card {
@@ -47,7 +53,7 @@ body {
   cursor: grab;
 }
 
-.cardName {
+.Card .cardName {
   width: 100%;
   height: 20%;
   position: absolute;
@@ -69,24 +75,101 @@ body {
   transform: translateY(0);
 }
 
-#cardHolder {
-  width: 100px;
-  height: 100px;
+.HeldCard {
+  width: 5em;
+  height: 5em;
+  color: white;
+  border-radius: 7%;
+  overflow: hidden;
+  position: relative;
+  border: solid #333333 2px;
+  margin-left: -15px;
+  transition: transform 0.5s;
+  box-shadow: 1rem 0 2px rgba(0, 0, 0, 0.25);
+}
+
+.cardPreview {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 85px;
+  height: 85px;
+  background-image: url("UIImages/defaultProfile.png");
+  background-position: center;
+  background-size: cover;
+  transform: translate(-50%, -50%);
+}
+
+.HeldCard:hover {
+  transition: transform 0.5s;
+  transform: translateY(-51%);
+}
+
+.HeldCard:hover~.HeldCard {
+  transform: translateX(-10px);
+}
+
+.HeldCard:hover .cardName {
+  transform: translateY(0);
+}
+
+.HeldCard .cardName {
+  width: 100%;
+  height: 20%;
   position: absolute;
-  right: 0px;
   bottom: 0px;
-  margin: 5px;
-  cursor: pointer;
+  background-color: #333333;
+  z-index: 1;
+  font-size: 1vh;
+  text-align: center;
+  display: block;
+  transform: translateY(100%);
+  transition: transform 0.5s;
 }
 
 #heldCards {
-  width: calc(100%-100px)
+  width: calc(100% - 100px);
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  transform: translateY(50%);
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0;
+  overflow-y: visible;
+  transition: left 2s;
+}
+
+#heldCards.hidden {
+  left: 100%;
+}
+
+#cardHolder.droppable-hover {
+  background-color: rgba(0, 50, 0, 0.1);
+  border: solid rgba(50, 100, 50, 0.5) 5px;
+  border-radius: 10px;
+}
+
+#cardHolder {
+  width: 99vw;
+  height: 150px;
+  position: absolute;
+  bottom: 5px;
+  cursor: pointer;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 #cardHolderOverlay {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
   background-image: url("UIImages/cardHolderOutline.png");
   background-position: center;
   background-size: cover;
+  background-color: black;
+  float: right;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  z-index: 10;
 }
